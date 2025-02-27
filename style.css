@@ -23,7 +23,7 @@ body {
 /* Applica il font Inter agli elementi span */
 span {
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem; /* Rimpicciolisce il font */
+    font-size: 0.7rem; /* Rimpicciolisce il font */
 }
 /* Navbar */
 .navbar {
