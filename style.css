@@ -1,0 +1,267 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+@font-face {
+    font-family: 'Gamay';
+    src: url('fonts/Gamay-Wide-Black-Italic-iF6662d5eecb870.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Reset e impostazioni base */
+body {
+    font-family: 'Gamay', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Applica il font Inter agli elementi span */
+span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; /* Rimpicciolisce il font */
+}
+/* Navbar */
+.navbar {
+    border-bottom: 2px solid #fff;
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff !important;
+}
+
+.row {
+    height: 400px;
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold;
+    color: #ffcc00 !important;
+}
+
+/* Titoli di sezione */
+h2 {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+/* About Me Section */
+section.container {
+    max-width: 900px;
+}
+
+/* Contact */
+p {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.image-slider {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    width: calc(100% * 2); /* Larghezza doppia per effetto continuo */
+    animation: scroll 10s linear infinite;
+}
+
+.slider-item {
+    width: 33.33%; /* Mostra sempre 3 immagini */
+    padding-left: 10px;
+    flex-shrink: 0;
+}
+
+/* Animazione per lo scorrimento */
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* Scorri metà della traccia per ripetere */
+}
+
+.fixed-size-img {
+    width: 300px;  /* Imposta una larghezza fissa */
+    height: 300px; /* Imposta un'altezza fissa */
+    object-fit: cover; /* Assicura che l'immagine riempia il contenitore senza deformarsi */
+}
+
+.scrolling-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: black;
+    padding: 10px 0;
+    position: relative;
+}
+
+.scrolling-text {
+    display: flex;
+    width: max-content; /* Evita il glitch */
+    font-size: 24px !important;
+    font-weight: bold !important;
+    font-family: 'Gamay', sans-serif !important;
+    color: #ffcc00;
+    animation: scroll-text-l 10s linear infinite;
+    animation-play-state: paused; /* L'animazione è ferma di default */
+}
+
+
+/* Quando ci passi sopra, l'animazione parte */
+.scrolling-container:hover .scrolling-text {
+    animation-play-state: running;
+}
+
+/* Effetto di sfumatura ai lati */
+.scrolling-container::before,
+.scrolling-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.scrolling-container::before {
+    left: 0;
+    background: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.scrolling-container::after {
+    right: 0;
+    background: linear-gradient(to left, black 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Animazione continua */
+@keyframes scroll-text-l {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-33%);
+    }
+}
+
+/*  pagina di caricamento caricamento */
+/* Sfondo */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Barra di caricamento */
+.loading-bar {
+    width: 0%;
+    height: 5px;
+    background: white;
+    animation: expand-bar 2s ease-out forwards;
+}
+
+/* Nasconde il contenuto inizialmente */
+.hidden {
+    display: none;
+}
+
+/* Animazione della linea */
+@keyframes expand-bar {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+.media-wrapper {
+    display: flex;
+    align-items: center; /* Allinea verticalmente il testo con il video */
+    gap: 10px; /* Spazio tra il video e il testo */
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.media-text {
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+.media-container {    
+    display: inline-block; /* Cambia per permettere il posizionamento a fianco */    
+    position: relative;    
+    width: 600px; /* Modifica la grandezza che vuoi */    
+    height: 300px;    
+    overflow: hidden;    
+    border-radius: 10px;    
+    cursor: pointer;    
+    transition: transform 0.3s ease; /* Ora il container si espande */
+}
+
+.media-image, .media-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Nasconde il video all'inizio */
+.media-video {
+    opacity: 0;
+}
+
+/* Effetto zoom quando passi sopra */
+.media-container:hover {
+    transform: scale(1.5);
+    width: 100%;
+}
+
+.media-container:hover .media-image {
+    opacity: 0;
+}
+
+/* Il video diventa visibile */
+.media-container:hover .media-video {
+    opacity: 1;
+}
+
+/* video background */
+
+.background-video {
+    width: 100%; /* Occupa tutta la larghezza */
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+}
+
+.image-container {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;  /* Centra orizzontalmente */
+    align-items: center;      /* Centra verticalmente */
+}
+
+.image-container img {
+    max-width: 100%; /* Evita che l'immagine esca dal div */
+    max-height: 100%;
+}
